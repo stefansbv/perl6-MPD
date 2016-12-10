@@ -1,6 +1,9 @@
 use v6;
 use NativeCall;
 
+my constant mpdcli = 'mpdclient';
+my constant mpdcli_v = v2;
+
 class MPD {
     class Connection is repr('CPointer') {};
     class Song       is repr('CPointer') {};
@@ -37,43 +40,43 @@ class MPD {
 
 sub mpd_connection_new(Str $host, Int $port)
     returns OpaquePointer
-    is native('libmpdclient') { ... }
+    is native(mpdcli, mpdcli_v) { ... }
 
 sub mpd_connection_free(OpaquePointer)
-    is native('libmpdclient') { ... }
+    is native(mpdcli, mpdcli_v) { ... }
 
 sub mpd_connection_get_error(OpaquePointer)
     returns Int
-    is native('libmpdclient') { ... }
+    is native(mpdcli, mpdcli_v) { ... }
 
 sub mpd_connection_get_error_message(OpaquePointer)
     returns Str
-    is native('libmpdclient') { ... }
+    is native(mpdcli, mpdcli_v) { ... }
 
 sub mpd_run_current_song(OpaquePointer)
     returns OpaquePointer
-    is native('libmpdclient') { ... }
+    is native(mpdcli, mpdcli_v) { ... }
 
 sub mpd_song_free(OpaquePointer)
-    is native('libmpdclient') { ... }
+    is native(mpdcli, mpdcli_v) { ... }
 
 sub mpd_song_get_uri(OpaquePointer)
     returns Str
-    is native('libmpdclient') { ... }
+    is native(mpdcli, mpdcli_v) { ... }
 
 sub mpd_song_get_id(OpaquePointer)
     returns Int
-    is native('libmpdclient') { ... }
+    is native(mpdcli, mpdcli_v) { ... }
 
 sub mpd_run_status(OpaquePointer)
     returns OpaquePointer
-    is native('libmpdclient') { ... }
+    is native(mpdcli, mpdcli_v) { ... }
 
 sub mpd_status_free(OpaquePointer)
-    is native('libmpdclient') { ... }
+    is native(mpdcli, mpdcli_v) { ... }
 
 sub mpd_status_get_state(OpaquePointer)
     returns Int
-    is native('libmpdclient') { ... }
+    is native(mpdcli, mpdcli_v) { ... }
 
 # vim: ft=perl6
